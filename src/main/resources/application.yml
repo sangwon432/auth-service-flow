@@ -12,3 +12,13 @@ jwt:
   refresh-token-ttl: 1d
 
 
+#spring:
+#  application:
+#    name: auth-service-flow
+#  jpa:
+#    open-in-view: false
+#
+#jwt:
+#  private-key: classpath:jwt/app.key
+#  public-key: classpath:jwt/app.pub
+#  ttl: 15m
