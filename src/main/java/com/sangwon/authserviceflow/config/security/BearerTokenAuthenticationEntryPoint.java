@@ -30,8 +30,9 @@ public class BearerTokenAuthenticationEntryPoint implements AuthenticationEntryP
             HttpServletRequest request,
             HttpServletResponse response,
             AuthenticationException authException
-    ) throws IOException, ServletException {
-        final var status = HttpStatus.FORBIDDEN;
+    ) throws IOException {
+//        final var status = HttpStatus.FORBIDDEN;
+        final var status = HttpStatus.UNAUTHORIZED;
 
         log.info("{} : {}", status.getReasonPhrase(), authException.getMessage());
 
