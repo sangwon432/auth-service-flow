@@ -26,9 +26,9 @@ public class AuthController {
     public ResponseEntity<AuthenticationResponseDto> authenticate(
             @Valid @RequestBody final AuthenticationRequestDto authenticationRequestDto
     ) {
-        final var authTokens = authService.authenticate(authenticationRequestDto.email(), authenticationRequestDto.password());
+        final var authTokens = authService.authenticate(authenticationRequestDto.username(), authenticationRequestDto.password());
         return ResponseEntity.ok()
-//                .header(SET_COOKIE, )
+                .header(SET_COOKIE, null)
                 .body(new AuthenticationResponseDto(authTokens.accessToken()));
 
     }

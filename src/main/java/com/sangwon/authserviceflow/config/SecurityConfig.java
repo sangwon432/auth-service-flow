@@ -79,11 +79,12 @@ public class SecurityConfig {
             final BearerTokenAuthenticationEntryPoint authenticationEntryPoint,
             final BearerTokenAccessDeniedHandler accessDeniedHandler
             ) throws Exception {
-        return http.csrf(AbstractHttpConfigurer::disable)
+        return http
+                .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-//                        .requestMatchers("/api/user/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/auth/login").permitAll()
+                        .requestMatchers("/api/user/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session ->

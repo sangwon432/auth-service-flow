@@ -20,15 +20,15 @@ public class AuthService {
     private final JwtService jwtService;
     private final UserRepository userRepository;
 
-    public AuthTokens authenticate(final String email, final String password) {
-        final var authToken = UsernamePasswordAuthenticationToken.unauthenticated(email, password);
+    public AuthTokens authenticate(final String username, final String password) {
+        final var authToken = UsernamePasswordAuthenticationToken.unauthenticated(username, password);
         System.out.println("HERE");
         System.out.println(authToken);
         final var authentication = authenticationManager.authenticate(authToken);
 
-        final var user = userRepository.findByEmail(email)
+        final var user = userRepository.findByEmail(username)
                 .orElseThrow(() ->
-                        new UsernameNotFoundException("User with username [%s] not found".formatted(email)));
+                        new UsernameNotFoundException("User with username [%s] not found".formatted(username)));
 
         return authenticate(user);
     }

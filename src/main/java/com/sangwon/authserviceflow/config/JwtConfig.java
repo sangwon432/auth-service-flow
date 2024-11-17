@@ -36,7 +36,7 @@ public class JwtConfig {
     }
 
     @Bean
-    public JwtDecoder jwtDecoderncoder() {
+    public JwtDecoder jwtDecoder() {
         return NimbusJwtDecoder.withPublicKey(publicKey).build();
     }
 
